@@ -1,0 +1,105 @@
+data:
+  name: shapemol
+  dataset: moses2
+  version: dgcnn_signeddist_512
+  datasize: 300
+  chunk_size: 50000
+  num_workers: 20
+  processed_path: ../data/MOSES2/
+  path: ../data/MOSES2/MOSES2_training_val_dataset.pkl
+  split: ../data/MOSES2/MOSES2_training_val_dataset_split.pt
+  transform:
+    ligand_atom_mode: add_aromatic
+    random_rot: False
+  shape:
+    use_shape: True
+    shape_type: pointAE_shape
+    point_cloud_samples: 512
+    shape_parallel: False
+    num_workers: 1
+    batch_size: 8
+    checkpoint: ../models/se.pt
+
+model:
+  denoise_type: diffusion
+  model_mean_type: C0
+  gt_noise_type: origin
+  schedule_pos:
+    beta_schedule: sigmoid
+    beta_start: 1.e-7
+    beta_end: 0.01
+    s: 6
+  schedule_v:
+    beta_schedule: cosine
+    s: 0.01
+  num_diffusion_timesteps: 1000
+  loss_v_weight: 200.0
+  v_mode: uniform
+  v_net_type: mlp
+  pred_bond_type: True
+  loss_bond_weight: 0.1
+  loss_pos_type: mse
+  use_bond_dist_loss: True
+  loss_bond_dist_weight: 0.1
+  use_bond_angle_loss: False
+  loss_bond_angle_weight: 0.1
+  use_torsion_angle_loss: False
+  loss_torsion_angle_weight: 0.01
+  loss_torsion_angle_type: one
+  sample_time_method: symmetric
+  loss_weight_type: noise_level
+  loss_pos_min_weight: 0
+  loss_pos_max_weight: 10
+  time_emb_dim: 8
+  time_emb_mode: simple
+  center_pos_mode: none
+  atom_enc_mode: add_aromatic
+  node_indicator: True
+  model_type: uni_o2
+  num_blocks: 1
+  num_layers: 8
+  scalar_hidden_dim: 128
+  vec_hidden_dim: 32
+  n_heads: 16
+  edge_feat_dim: 5
+  edge_feat: covalent_bond
+  num_r_gaussian: 20
+  knn: 8
+  num_node_types: 8
+  act_fn: relu
+  norm: True
+  cutoff_mode: knn
+  r_feat_mode: sparse
+  energy_h_mode: basic
+  r_max: 10.0
+  x2h_out_fc: False
+  sync_twoup: False
+  shape_dim: 128
+  shape_latent_dim: 128
+  shape_mode: None
+  shape_type: pointAE_shape
+  cond_mask_prob: 0.1
+  use_shape_vec_mul: False
+  use_residue: True
+
+train:
+  seed: 2023
+  batch_size: 32
+  num_workers: 10
+  max_iters: 10000000
+  val_freq: 2000
+  pos_noise_std: 0.1
+  max_grad_norm: 8.0
+  bond_loss_weight: 1.0
+  optimizer:
+    type: adam
+    lr: 0.001
+    weight_decay: 0
+    beta1: 0.95
+    beta2: 0.999
+  scheduler:
+    type: plateau
+    factor: 0.6
+    patience: 10
+    min_lr: 1e-05
+  n_acc_batch: 1
