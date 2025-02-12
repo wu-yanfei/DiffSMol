@@ -30,19 +30,19 @@ scikit-learn - 1.0.2
 
 scipy - 1.7.2
 
-Other packages include tqdm, yaml, lmdb. Please check the shape-gen.yml file for the environment installation.
+Other packages include tqdm, yaml, lmdb. Please check the environment.yml file for the environment installation.
 
 As we use openeye to calculate the similarity values, the license of openeye might be required in order to run our code. Please check the website of openeye (https://www.eyesopen.com/academic-licensing) about how to get their license.
 
 You can also use shaep (https://users.abo.fi/mivainio/shaep/index.php) for free to calculate shaep similarities as suggested by (https://github.com/keiradams/SQUID). 
 
-Due to the limitations of file size, we provide our generated data and our processed training data at the link https://doi.org/10.5281/zenodo.14854841.
+Due to the limitations of file size, we provide our generated data and our processed training data at the link https://zenodo.org/records/14855728.
 
 ### Training
 
 #### Shape Embedding from SDF
 
-Please use the command below to train the shape autoencoder for shape embeddings:
+Please use the command below under the directory "source" to train the shape autoencoder for shape embeddings:
 ```
 python -m scripts.train_shapeAE ../config/shape/se_VNDGCNN_hidden256_latent128_eclayer4_dclayer2_signeddist_pc512.yml --logdir <path to save trained models>
 ```
@@ -90,4 +90,4 @@ Here, "data_id" denotes the index of molecules. Please note that lmdb, which we 
 
 ### Results
 
-We provided our results for PMG and SMG reported in the paper at the link https://doi.org/10.5281/zenodo.14854841. The results can be loaded with torch.load("filename") function. 
+We provided our results for PMG and SMG reported in the paper at the link https://zenodo.org/records/14855728. The results can be loaded with torch.load("filename") function. 
