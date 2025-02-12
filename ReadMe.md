@@ -36,6 +36,8 @@ As we use openeye to calculate the similarity values, the license of openeye mig
 
 You can also use shaep (https://users.abo.fi/mivainio/shaep/index.php) for free to calculate shaep similarities as suggested by (https://github.com/keiradams/SQUID). 
 
+Due to the limitations of file size, we provide our generated data and our processed training data at the link https://doi.org/10.5281/zenodo.14854841.
+
 ### Training
 
 #### Shape Embedding from SDF
@@ -88,4 +90,4 @@ Here, "data_id" denotes the index of molecules. Please note that lmdb, which we 
 
 ### Results
 
-We provided our results for PMG and SMG reported in the paper in the directory "results". The results can be loaded with torch.load("filename") function. 
+We provided our results for PMG and SMG reported in the paper at the link https://doi.org/10.5281/zenodo.14854841. The results can be loaded with torch.load("filename") function. 
