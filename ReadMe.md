@@ -2,6 +2,7 @@
 
 This is the implementation of our DiffSMol model. This paper has been accepted by the journal "Nature Machine Intelligence".
 
+This paper is an extended implementation of our workshop paper published in NeurIPS@GenBio 2023 workshop: https://openreview.net/pdf?id=JWfvMT43pZ
 
 
 ### Requirements
