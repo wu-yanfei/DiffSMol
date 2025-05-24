@@ -5,33 +5,27 @@ This is the implementation of our DiffSMol model. This paper has been accepted b
 This paper is an extended implementation of our workshop paper published in NeurIPS@GenBio 2023 workshop: https://openreview.net/pdf?id=JWfvMT43pZ
 
 
-### Requirements
+### Dependencies
 
-Python - 3.7.16
+#### Install via Conda and Pip
 
-RDKit - 2022.9.5
-
-openbabel - 3.0.0
-
-oddt - 0.7
-
-pytorch - 1.11.0 + cuda11.3
-
-pytorch3d - 0.7.1
-
-torch-cluster - 1.6.0
-
-torch-scatter - 2.0.9
-
-torch-geometric - 2.3.0
-
-numpy - 1.21.5
-
-scikit-learn - 1.0.2
-
-scipy - 1.7.2
-
-Other packages include tqdm, yaml, lmdb. Please check the environment.yml file for the environment installation.
+```
+conda create -n diffsmol python=3.9 -y
+conda activate diffsmol
+ 
+conda install pytorch=1.11.0 cudatoolkit=11.5 -c pytorch -c conda-forge
+conda install -c pytorch3d pytorch3d
+ 
+conda install -c conda-forge rdkit openbabel tensorboard pyyaml easydict python-lmdb numpy=1.23.5 scipy=1.9.3 scikit-learn=1.1.3 scikit-image oddt
+ 
+pip install torch-scatter==2.0.9 torch-sparse==0.6.13 torch-cluster==1.6.0 torch-spline-conv==1.2.1 -f https://data.pyg.org/whl/torch-1.11.0+cu115.html
+pip install torch-geometric==2.0.4
+ 
+pip install meeko==0.1.dev3 scipy pdb2pqr vina==1.2.2
+pip install git+https://github.com/Valdes-Tresanco-MS/AutoDockTools_py3
+ 
+pip install trimesh
+```
 
 As we use openeye to calculate the similarity values, the license of openeye might be required in order to run our code. Please check the website of openeye (https://www.eyesopen.com/academic-licensing) about how to get their license.
 
